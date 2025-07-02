@@ -1,6 +1,6 @@
-from fastapi import FastAPI
+from flask import Flask
 
-app = FastAPI()
+app = Flask(__name__)
 
 def factorial(n):
     result = 1
@@ -16,8 +16,8 @@ def strong_number(num):
     else:
         return 'Not a Strong Number'
 
-@app.get('/check_strong/{num}')
-def check_strong(num: int):
+@app.get('/check/<int:num>')
+def check(num: int):
     return strong_number(num)   
 
 
